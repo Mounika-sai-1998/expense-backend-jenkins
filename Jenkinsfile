@@ -13,6 +13,7 @@ pipeline {
         stage ('testing') {
             steps {
                 sh 'echo this is testing' 
+                sh 'ls -lrt'
             }
         }
     
