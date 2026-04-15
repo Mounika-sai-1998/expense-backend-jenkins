@@ -10,10 +10,9 @@ pipeline {
     }
      
     stages {
-        stage ('testing') {
+        stage ('Install dependencies') {
             steps {
-                sh 'echo this is testing' 
-                sh 'ls -lrt'
+                sh 'npm install' 
             }
         }
     
