@@ -17,17 +17,25 @@ pipeline {
                 script{
                     def packageJson = readJSON file: 'package.json'
                     appVersion = packageJson.version
-                    echo "application version: $appVersion"
+                    echo 'application version: $appVersion'
                 }
             }
         }
         stage ('Install dependencies') {
             steps {
                 sh '''
-                    npm install
-                    ls -lrt
-                    echo "application version: $appVersion"
+                npm install
+                ls -lrt
+                echo 'application version: $appVersion'
                 ''' 
+            }
+        }
+        stage('Build'){
+            steps{
+                sh '''
+                zip -q -r backend-${appVersion}.zip * -x Jenkinsfile -x backend-${appVersion}.zip
+                ls -ltr
+                '''
             }
         }
     
