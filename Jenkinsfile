@@ -8,7 +8,9 @@ pipeline {
         disableConcurrentBuilds()        // to queue a build when there’s already an executing build of the Pipeline
         ansiColor('xterm')
     }
-     
+    environment{
+        def appVersion = '' //variable declaration
+    }
     stages {
         stage('read the version'){
             steps{
